@@ -22,38 +22,52 @@ function MostrarResultado() {
     ]);
   };
 
+  function sumarValores(){
+    let suma = 0
+    numeros.forEach((item) => {
+      suma += parseFloat(item.valor)
+    })
+    return suma;
+  }
+
   return (
-    <div>
-      <form onSubmit={numprev}>
-        <label>
-          Número:
-          <input
+    <div className="container">
+      <form onSubmit={numprev} class="center">
+        <h1 class="cho"> Juegue su Chance </h1>
+        <div className="form-group">
+          <label class="col">Número:</label>
+          <input class="inp" placeholder='Numero a jugar'
             type="number"
-            nombre="numero"
+            name="numero"
             value={numeros.numero || ''}
             onChange={Lis}
+            className="form-control"
           />
-        </label>
-        <label>
-          Valor:
-          <input
+        </div>
+        <div className="form-group">
+          <label class= "col" >Valor:</label>
+          <input class="inc" placeholder='Ingrese el valor'
             type="text"
-            nombre="valor"
-            valores={numeros.valor || ''}
+            name="valor"
+            value={numeros.valor || ''}
             onChange={Lis}
+            className="form-control"
           />
-        </label>
-        <button type="submit">Agregar</button>
+        </div>
+        <button type="submit" className="btn btn-primary">Agregar</button>
       </form>
-      <ul>
-        {numeros.map((nv, indeice) => (
-          <li key={indeice}>
+      <ul className="list-group">
+        {numeros.map((nv, index) => (
+          <li key={index} className="list-group-item">
             Numero: {nv.numero}, Valor: $ {nv.valor}
           </li>
         ))}
       </ul>
+      <center><p className="mt-3">Total: {sumarValores()}</p></center>
+      
     </div>
   );
 }
 
 export default MostrarResultado;
+
